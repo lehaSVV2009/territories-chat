@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "start": "npm run prod",
-    "server": "babel-node ./src/bin/www",
-    "server:prod": "node ./build/bin/www",
-    "dev": "NODE_ENV=development npm-run-all server",
+    "start:dev": "npm run dev",
+    "dev": "NODE_ENV=development npm-run-all clean build server",
+    "prod": "NODE_ENV=production npm-run-all server",
     "clean": "rimraf build",
     "build": "babel ./src --out-dir build",
-    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
+    "server": "node ./build/bin/www",
     "watch": "nodemon"
   },
   "dependencies": {
