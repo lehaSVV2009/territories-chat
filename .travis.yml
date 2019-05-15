@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "10"
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.12.3
+  - export PATH=$HOME/.yarn/bin:$PATH
+script:
+  - yarn build
+deploy:
+  provider: heroku
+  app: territories-chat
+  skip_cleanup: true
+  api_key:
+    secure: Air8aAyrI5Uz2hYAQy8JdJMhgQX2koYPiyu7EiuC1hk+Q5KiOWWblTEKJP8RhNfXITZ4WPLINHFGiRpcx1leRLZn1NhjHA4nmbVOQS8Wfdo9zCTReEflTD/FxsXEawDwaP270GHrPLPxYd+CJwVd8JIqfVmFw5m3zUBp1u4K5BdUnLr7QsK0WEFd46N3hxwfhZLRA9F8jql8QIfh6tSzSGnk/Oxq+kTcoKeFwkr2PiqDtka41HleEC8Z4fnuJxXb+JF9E2Y8bZB5j/R3hbx0cq7mJcxm4fx1zXvRfD4tQPFoJlgRPpfWLUANrCRjfl3K/cwkiZOYplCl+gIHCEB0Blxb1pzVeOklXTaC2R4bsP+R1xdRCQRJUjbBZZN8tCcMxqNynpcAPid9YWdDVGV3SEePJYMD6xbR8HGVC7dA8RV0fRxoT9owaPBOw5JtAYt84aPQaJ45xOnKyPU0BmGwVjpxB+fSkD2mqHf8XJsT6b9WavZJmDFxMvDFu/dh8d9Sk2wybCc0qXRmv/JbgAV/EexsKPO3IVuuh2yX/bgE81D8wocwJGNWZJSicYNXIIQeziJrZ6yo6TSIRjyRC5Ke1DylP6urhjrU1/+pfC+PmaEbNsR3zjiHcU2b85p1a1WDL/UvEh0eK+8poSNkYYG0k3KW2zpq1L+1IvwxLLgAB7A=
