@@ -1,13 +1,67 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Simple Chat</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.slim.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <div class="jumbotron">
+        <h1 class="display-4">Send text</h1>
+        <br />
+        <input id="username" class="form-control" placeholder="username" />
+        <br />
+        <textarea
+          id="text"
+          class="form-control"
+          placeholder="Your text Here"
+        ></textarea>
+        <br />
+        <button id="send" class="btn btn-success">Send</button>
+      </div>
+      <div id="messages"></div>
+    </div>
 
-<head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-</body>
-
+    <script>
+      $(() => {
+        $("#send").click(() => {
+          sendMessage({
+            username: $("#username").val(),
+            text: $("#text").val()
+          });
+        });
+        fetchMessages();
+      });
+      function addMessageToUI(message) {
+        $("#messages").append(
+          `<h4>${message.username}</h4><p>${message.text}</p>`
+        );
+      }
+      function fetchMessages() {
+        $.get("http://localhost:3000/chats/1/messages", messages => {
+          messages.forEach(addMessageToUI);
+        });
+      }
+      function sendMessage(message) {
+        $.ajax({
+          url: "http://localhost:3000/chats/1/messages",
+          type: "POST",
+          data: JSON.stringify(message),
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function() {}
+        });
+      }
+      var socket = io();
+      socket.on("message", addMessageToUI);
+    </script>
+  </body>
 </html>

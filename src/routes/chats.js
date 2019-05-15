@@ -1,23 +1,23 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.json([{ id: '456' }]);
+router.get("/", function(req, res, next) {
+  res.json([{ chatId: "456" }]);
 });
 
-router.get('/:id', function(req, res, next) {
-  res.json({ id: req.params.id });
+router.get("/:chatId", function(req, res, next) {
+  res.json({ chatId: req.params.chatId });
 });
 
-router.post('/', function(req, res, next) {
-  res.status(201).json({ id: '123' });
+router.post("/", function(req, res, next) {
+  res.status(201).json({ chatId: "123" });
 });
 
-router.put('/:id', function(req, res, next) {
-  res.json({ id: req.params.id });
+router.put("/:chatId", function(req, res, next) {
+  res.json({ chatId: req.params.chatId });
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete("/:chatId", function(req, res, next) {
   res.sendStatus(204);
 });
 
