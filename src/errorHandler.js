@@ -1,6 +1,4 @@
 const errorHandler = (err, req, res, next) => {
-  console.error("Global Hanlder", err.message);
-
   console.error(err.message);
 
   if (!err.statusCode) {

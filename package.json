@@ -17,8 +17,10 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
+    "nedb": "^1.8.0",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
